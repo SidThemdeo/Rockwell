@@ -1,18 +1,17 @@
-var exp = require('express');
-var app = exp();
+var express = require('express');
+var app = express();
 var path=require("path");
 var fs=require("fs");
 
+//server configuration
 app.use(express.static(path.join(__dirname,'public')));
 
-app.listen(8081, function () {
-	console.log("Server Started on 8081");
-});
-
-app.get('/', function (req, res) {
+ app.get('/', function (req, res) {
    res.sendFile(path.join(___dirname + '/index.html'));
 });
 
-app.all('*', function (req, res) {
-	res.send('Sorry, Invalid URL');
-});
+var server = app.listen(8081, function () {
+  var host = server.address().address
+  var port = server.address().port
+  console.log("Server Started at: 8081", host, port)
+})
